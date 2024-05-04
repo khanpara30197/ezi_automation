@@ -4,6 +4,7 @@ import allure
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Faker
@@ -50,19 +51,27 @@ def execute_test_with_maximized_screen(driver):
     allure.attach(driver.get_screenshot_as_png(), name="after login", attachment_type=allure.attachment_type.PNG)
     click_my_appointment=driver.find_element(By.XPATH,"//ul[@class='mes_nav']//a[normalize-space()='Mes rendez-vous']").click()
     allure.attach(driver.get_screenshot_as_png(), name="my appointment page", attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
     click_past_appointment=driver.find_element(By.XPATH,"//a[@id='pills-profile-tab']").click()
     allure.attach(driver.get_screenshot_as_png(), name="past appointment page",attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
     click_my_favourites=driver.find_element(By.XPATH,"//ul[@class='mes_nav']//a[normalize-space()='Mes favoris']").click()
     allure.attach(driver.get_screenshot_as_png(), name="my favourites page",attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
     click_my_comment=driver.find_element(By.XPATH,"//ul[@class='mes_nav']//a[normalize-space()='Mes commentaires']").click()
     allure.attach(driver.get_screenshot_as_png(), name="my comment page", attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
     click_my_profile=driver.find_element(By.XPATH,"//ul[@class='mes_nav']//a[normalize-space()='Mon profil']").click()
     allure.attach(driver.get_screenshot_as_png(), name="my profile page", attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
     click_register_button=driver.find_element(By.XPATH,"//button[normalize-space()='Register']").click()
     allure.attach(driver.get_screenshot_as_png(), name="click register button", attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
     click_logo=driver.find_element(By.XPATH,"//img[@src='https://beta.ezi.ma/images/dark-logo.png']").click()
     allure.attach(driver.get_screenshot_as_png(), name="On click redirect to home page", attachment_type=allure.attachment_type.PNG)
+    time.sleep(3)
     click_search_salon_button=driver.find_element(By.XPATH,"//input[@id='search_prestation']").send_keys("lipo")
+    time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name="search salon",attachment_type=allure.attachment_type.PNG)
     click_search_name=driver.find_element(By.XPATH,"//li[@class='list-group-item formulation_concentration_item getData']").click()
     allure.attach(driver.get_screenshot_as_png(), name="search name",attachment_type=allure.attachment_type.PNG)
@@ -79,18 +88,46 @@ def execute_test_with_maximized_screen(driver):
     allure.attach(driver.get_screenshot_as_png(), name="professional click",attachment_type=allure.attachment_type.PNG)
     select_professional_name=driver.find_element(By.XPATH,"//option[@value='Vishal Bhai']").click()
     allure.attach(driver.get_screenshot_as_png(), name="select professional name", attachment_type=allure.attachment_type.PNG)
+    click_add_a_service_afterwards=driver.find_element(By.XPATH,"//a[normalize-space()='Ajouter une prestation à la suite']").click()
+    allure.attach(driver.get_screenshot_as_png(), name="click_add_a_service_afterwards",attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
+    select_another_service_button=driver.find_element(By.XPATH,"//div[@class='selectize-input items not-full has-options']").click()
+    select_another_service_option=driver.find_element(By.XPATH,"//div[normalize-space()='Clean Shave']").click()
+    allure.attach(driver.get_screenshot_as_png(), name="select_another_service",attachment_type=allure.attachment_type.PNG)
+    click_category=driver.find_element(By.XPATH,"//select[@aria-label='Default select example']").click()
+    select_category_option=driver.find_element(By.XPATH,"//option[@value='face']").click()
+    allure.attach(driver.get_screenshot_as_png(), name="select_category_option",attachment_type=allure.attachment_type.PNG)
+    select_face_clean_shave=driver.find_element(By.XPATH,"//a[@data-service='Clean Shave']").click()
+    allure.attach(driver.get_screenshot_as_png(), name="select_face_clean_shave", attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
+    select_date=driver.find_element(By.XPATH,"//label[@for='08-May']").click()
+    allure.attach(driver.get_screenshot_as_png(), name="select_date",attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
+    select_time=driver.find_element(By.XPATH,"//a[normalize-space()='11:15']")
+    ActionChains(driver).click(select_time).perform()
+    allure.attach(driver.get_screenshot_as_png(), name="select_time", attachment_type=allure.attachment_type.PNG)
+    time.sleep(2)
+    click_date_modifier=driver.find_element(By.XPATH,"//a[@href='https://beta.ezi.ma/lipo-slim-centre/reservation']").click()
+    time.sleep(2)
+    allure.attach(driver.get_screenshot_as_png(), name="date modifier page", attachment_type=allure.attachment_type.PNG)
+    driver.back()
+    time.sleep(2)
+    click_complementry_textbox=driver.find_element(By.XPATH,"//textarea[@id='complement']").send_keys("I am Ravi Khanpara This is testing purpose")
+    allure.attach(driver.get_screenshot_as_png(), name="click_complementry_textbox", attachment_type=allure.attachment_type.PNG)
+    click_confirm_button=driver.find_element(By.XPATH,"//button[@id='Confirm_button']")
+    ActionChains(driver).click(click_confirm_button).perform()
+    time.sleep(2)
+    allure.attach(driver.get_screenshot_as_png(), name="click_confirm",attachment_type=allure.attachment_type.PNG)
+    click_show_appointment=driver.find_element(By.XPATH,"//a[@class='btns dark_btns']")
+    ActionChains(driver).click(click_show_appointment).perform()
+    allure.attach(driver.get_screenshot_as_png(), name="click_show_appointment", attachment_type=allure.attachment_type.PNG)
+    logo_click=driver.find_element(By.XPATH,"//img[@src='https://beta.ezi.ma/images/dark-logo.png']").click()
+    time.sleep(2)
+    allure.attach(driver.get_screenshot_as_png(), name="Redirect to home page",attachment_type=allure.attachment_type.PNG)
 
 
-    # click_hair_spa_reserver_butotn=driver.find_element(By.XPATH,"//a[@data-service='Hair Spa']").click()
-    # allure.attach(driver.get_screenshot_as_png(), name="hairspa reserver button click",attachment_type=allure.attachment_type.PNG)
-    # click_shaving_promotion_date=driver.find_element(By.XPATH,"//a[@data-service='Shaving']").click()
-    # allure.attach(driver.get_screenshot_as_png(), name="shaving reserver button click",attachment_type=allure.attachment_type.PNG)
 
     time.sleep(10)
-
-
-
-
     driver.delete_all_cookies()
 
 def test_user_flow():
@@ -102,4 +139,4 @@ def test_user_flow():
     finally:
         driver.quit()
 
-# pytest us_store/test_word_of_hyaluronic.py --alluredir="./reports"
+# pytest ezi_front_end_automation/test_user_flow.py --alluredir="./reports"
