@@ -124,6 +124,29 @@ def execute_test_with_maximized_screen(driver):
     logo_click=driver.find_element(By.XPATH,"//img[@src='https://beta.ezi.ma/images/dark-logo.png']").click()
     time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name="Redirect to home page",attachment_type=allure.attachment_type.PNG)
+    #home page category select
+    click_face_care_category=driver.find_element(By.XPATH,"//div[@class='link_bar']//a[normalize-space()='Face care']").click()
+    time.sleep(2)
+    driver.execute_script("window.scrollBy(0, 2000);")
+    allure.attach(driver.get_screenshot_as_png(), name="Redirect to face care category",attachment_type=allure.attachment_type.PNG)
+    click_beautiful_see_all_service=driver.find_element(By.XPATH,"//a[@href='https://beta.ezi.ma/face-care/beautiful'][normalize-space()='Voir toutes les prestations']")
+    ActionChains(driver).click(click_beautiful_see_all_service).perform()
+    time.sleep(2)
+    allure.attach(driver.get_screenshot_as_png(), name="Redirect to beautiful service",attachment_type=allure.attachment_type.PNG)
+    driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
+    allure.attach(driver.get_screenshot_as_png(), name="Beautiful services page ss",attachment_type=allure.attachment_type.PNG)
+    driver.back()
+    time.sleep(2)
+    driver.back()
+    time.sleep(2)
+    #most sought after service
+    click_physiotherapy=driver.find_element(By.XPATH,"//a[@href='https://beta.ezi.ma/physiotherapy']//div[@class='card-body']").click()
+    time.sleep(2)
+    allure.attach(driver.get_screenshot_as_png(), name="physiotherapy",attachment_type=allure.attachment_type.PNG)
+    driver.back()
+    time.sleep(2)
+
+
 
 
 
