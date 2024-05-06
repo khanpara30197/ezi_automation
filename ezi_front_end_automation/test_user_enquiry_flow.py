@@ -246,3 +246,4 @@ def test_user_flow():
         execute_test_with_maximized_screen(driver)
     finally:
         driver.quit()
+#pytest ezi_front_end_automation/test_user_enquiry_flow.py --alluredir="./reports"
