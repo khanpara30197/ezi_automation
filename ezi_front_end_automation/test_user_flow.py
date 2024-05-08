@@ -279,8 +279,8 @@ def execute_test_with_maximized_screen(driver):
     allure.attach(driver.get_screenshot_as_png(), name="Header linkdin", attachment_type=allure.attachment_type.PNG)
     driver.back()
     time.sleep(10)
-    driver.delete_all_cookies()
 
+    driver.delete_all_cookies()
 def test_user_flow():
     # Initialize the WebDriver (change the driver path as needed)
     driver = webdriver.Chrome()
