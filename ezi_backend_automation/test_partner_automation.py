@@ -144,11 +144,14 @@ def execute_test_with_maximized_screen(driver):
     click_date_of_birth_fill=driver.find_element(By.XPATH,"//input[@id='dateInput1']").send_keys("30/01/1997")
     time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name="above details capture screenshort",attachment_type=allure.attachment_type.PNG)
-    click_gender=driver.find_element(By.XPATH,"//select[@name='gender']").click()
+    click_gender=driver.find_element(By.XPATH,"//select[@name='gender']")
+    ActionChains(driver).click(click_gender).perform()
     time.sleep(2)
     select_gendar=driver.find_element(By.XPATH,"//option[normalize-space()='Male']").click()
+    time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name="gendar select",attachment_type=allure.attachment_type.PNG)
-    click_clity_drawer=driver.find_element(By.XPATH,"//select[@name='city']").click()
+    click_clity_drawer=driver.find_element(By.XPATH,"//select[@name='city']")
+    ActionChains(driver).click(click_clity_drawer).perform()
     time.sleep(2)
     select_city_name=driver.find_element(By.XPATH,"//option[@value='4']").click()
     time.sleep(2)
@@ -158,7 +161,8 @@ def execute_test_with_maximized_screen(driver):
     click_note_fill_visible =driver.find_element(By.XPATH,"//input[@name='note']").send_keys("This is testing of notes for staff")
     time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name="additional information", attachment_type=allure.attachment_type.PNG)
-    click_add_and_invite=driver.find_element(By.XPATH,"//button[normalize-space()='Add and invite']").click()
+    click_add_and_invite=driver.find_element(By.XPATH,"//button[normalize-space()='Add and invite']")
+    ActionChains(driver).click(click_add_and_invite).perform()
     time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name="click_add_and_invite",attachment_type=allure.attachment_type.PNG)
     # click_back_arrow=driver.find_element(By.XPATH,"//img[@src='https://beta.ezi.ma/images/arrow.png']").click()
@@ -168,12 +172,6 @@ def execute_test_with_maximized_screen(driver):
     ActionChains(driver).click(click_staff_icon).perform()
     time.sleep(2)
     allure.attach(driver.get_screenshot_as_png(), name=" click_staff_icon", attachment_type=allure.attachment_type.PNG)
-
-
-
-
-
-
 
     time.sleep(5)
     driver.delete_all_cookies()
@@ -185,3 +183,4 @@ def test_user_flow():
         execute_test_with_maximized_screen(driver)
     finally:
         driver.quit()
+        #pytest ezi_backend_automation/test_partner_automation.py --alluredir="./reports"
